@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+}
+
+form {
+  border: 1px solid;
+  border-radius: 30px;
+}
+
+form input {
+  padding: 10px 0 10px 15px;
+  border-radius: 30px;
+}
+
+form button,
+.clear-all {
+  border-radius: 30px;
+}
+
+.list .list-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+
+.list .list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #cda1a7;
+  cursor: pointer;
+  position: relative;
+}
+
+.list .list-item input[type="checkbox"]:checked {
+  background-color: #f7da99;
+}
+
+.list .list-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 22px;
+  color: #cda1a7;
+}
+
+.list .list-item.done label {
+  text-decoration: line-through;
+}
