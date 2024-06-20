@@ -1,14 +1,26 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import { Item as ItemInterface } from "../../types/globalTypes";
+import { addItem } from "../../store/features/ListSlice";
+import { useDispatch } from "react-redux";
 
-export type AddItemsProps = {
-  item: ItemInterface;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
+const AddItemForm = () => {
 
-const AddItemForm = ({ item, handleSubmit, handleChange }: AddItemsProps) => {
+  const [item, setItem] = useState<ItemInterface>({id:0,value:'',done:false});
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>):void => {
+    e.preventDefault()
+    dispatch(addItem(item))
+    setItem({ id: 0, value: '', done: false })
+  };
+
+  const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
+    const value = e.target.value;
+    const id = crypto.randomUUID()
+    setItem({ id, value, done: false })
+  };
 
   return (
     <form onSubmit={handleSubmit} className='flex relative w-full'>

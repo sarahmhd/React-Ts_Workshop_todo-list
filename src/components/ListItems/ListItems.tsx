@@ -1,17 +1,32 @@
-import { Item as ItemInterface } from "../../types/globalTypes";
+import { Droppable } from "react-beautiful-dnd";
 import Item from "../Item";
+import { RootState } from '../../store/store'
+import { useSelector } from "react-redux";
 
-export type ListItemsProps = {
-  items: ItemInterface[];
-  handleItemDone: (id: string | number) => void;
-  handleDelete: (id: string | number) => void;
-};
-export default function ListItems({ items, handleItemDone, handleDelete }: ListItemsProps) {
+export default function ListItems() {
+
+  const items = useSelector((state: RootState) => state.items.items)
+
+
   return (
-    <ul className='list list-none flex flex-col w-full gap-4 py-8'>
-      {
-        items.map(item => <Item key={item.id} item={item} handleItemDone={handleItemDone} handleDelete={handleDelete} />)
-      }
-    </ul>
+    <Droppable droppableId="todoList">
+      {(provided) => (
+        <ul
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          className='list list-none flex flex-col w-full gap-4 py-8'
+        >
+          {items.length > 0 ? (
+            items.map((item, idx) => <Item key={item.id} item={item} index={idx} />)
+          ) : (
+            <p className="message text-[#e08692] text-lg m-3 mt-8 pe-8 text-center">
+              Your todo list is currently empty. Start adding tasks to get organized!
+            </p>
+          )}
+          {provided.placeholder}
+        </ul>
+      )}
+    </Droppable>
+
   );
 }
