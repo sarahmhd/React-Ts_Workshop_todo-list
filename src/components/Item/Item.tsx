@@ -1,31 +1,32 @@
-import { Check, Pencil, Pointer, X } from 'lucide-react';
+import { Check, Pencil, X } from 'lucide-react';
 import { changeItemDone, deleteItem, editItem } from "../../store/features/ListSlice";
-import { useRef, useState } from 'react';
 
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from '@hello-pangea/dnd';
 import { Item as ItemInterface } from "../../types/globalTypes";
 import { useDispatch } from "react-redux";
+import { useState } from 'react';
 
-export type ItemProps = {
+type ItemProps = {
   item: ItemInterface,
   index: number
 };
-export default function Item({ item, index }: ItemProps) {
+
+const Item: React.FC<ItemProps> = ({ item, index }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editVal, setEditVal] = useState<string>(item.value);
   const dispatch = useDispatch();
 
   const handleItemDone = (id: number | string) => {
-    dispatch(changeItemDone(id))
+    dispatch(changeItemDone(id));
   };
 
   const handleDelete = (id: number | string) => {
-    dispatch(deleteItem(id))
+    dispatch(deleteItem(id));
   };
 
   const handleEdit = (id: number | string, editVal: string) => {
     setIsEdit(!isEdit);
-    dispatch(editItem({ id, editVal }))
+    dispatch(editItem({ id, editVal }));
   };
 
   return (
@@ -33,8 +34,8 @@ export default function Item({ item, index }: ItemProps) {
       {(provided) => (
         <li
           ref={provided.innerRef}
-          {...provided.dragHandleProps}
           {...provided.draggableProps}
+          {...provided.dragHandleProps}
           className={`list-item items-center w-full gap-2 ${item.done ? 'done' : ''}`}
         >
           <input
@@ -76,4 +77,6 @@ export default function Item({ item, index }: ItemProps) {
       )}
     </Draggable>
   );
-}
+};
+
+export default Item;

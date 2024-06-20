@@ -1,15 +1,13 @@
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable } from "@hello-pangea/dnd";
 import Item from "../Item";
-import { RootState } from '../../store/store'
+import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 
-export default function ListItems() {
-
-  const items = useSelector((state: RootState) => state.items.items)
-
+const ListItems: React.FC = () => {
+  const items = useSelector((state: RootState) => state.items.items);
 
   return (
-    <Droppable droppableId="todoList">
+    <Droppable droppableId="todos">
       {(provided) => (
         <ul
           ref={provided.innerRef}
@@ -27,6 +25,7 @@ export default function ListItems() {
         </ul>
       )}
     </Droppable>
-
   );
-}
+};
+
+export default ListItems;
