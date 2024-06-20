@@ -1,14 +1,14 @@
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { loadState, saveState } from './localStorage';
 
-import { configureStore } from '@reduxjs/toolkit';
 import itemsReducer from './features/ListSlice';
 
 const preloadedState = loadState();
 
+const reducers = combineReducers({items: itemsReducer,})
+
 const store = configureStore({
-    reducer: {
-        items: itemsReducer,
-    },
+    reducer: reducers,
     preloadedState
 });
 

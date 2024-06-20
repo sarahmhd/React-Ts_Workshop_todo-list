@@ -44,6 +44,6 @@ export const { addItem , changeItemDone , deleteItem , deleteAll , editItem , re
 
 export const userSelector = (state: RootState) => state.items;
 
-export default ListSlice.reducer
+export default ListSlice.reducer;
 
 
