@@ -13,6 +13,7 @@ const ListItems: React.FC = () => {
           ref={provided.innerRef}
           {...provided.droppableProps}
           className='list list-none flex flex-col w-full gap-4 py-8'
+          style={{ minHeight: '40vh' }}
         >
           {items.length > 0 ? (
             items.map((item, idx) => <Item key={item.id} item={item} index={idx} />)

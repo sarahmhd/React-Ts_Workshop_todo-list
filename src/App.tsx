@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AddItemForm from './components/AddItemForm';
 import ClearAll from './components/ClearAll';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import ListItems from './components/ListItems';
 import { RootState } from './store/store';
@@ -30,6 +31,8 @@ const App: React.FC = () => {
         <AddItemForm />
         <ListItems />
         {items.length > 0 && <ClearAll />}
+
+        <Footer />
       </DragDropContext>
     </div>
   )
