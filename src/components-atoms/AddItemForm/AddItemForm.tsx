@@ -1,19 +1,16 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import { Item as ItemInterface } from "../../types/globalTypes";
-import { addItem } from "../../store/features/ListSlice";
-import { useDispatch } from "react-redux";
+import { itemsAtom } from "../../atoms/items-atom";
 
 const AddItemForm = () => {
 
   const [item, setItem] = useState<ItemInterface>({ id: 0, value: '', done: false });
 
-  const dispatch = useDispatch();
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     if (!item.value.trim()) return;
-    dispatch(addItem(item))
+    itemsAtom.addItem(item)
     setItem({ id: 0, value: '', done: false })
   };
 

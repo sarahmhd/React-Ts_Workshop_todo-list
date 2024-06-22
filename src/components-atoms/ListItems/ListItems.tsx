@@ -1,10 +1,9 @@
 import { Droppable } from "@hello-pangea/dnd";
 import Item from "../Item";
-import { RootState } from "../../store/store";
-import { useSelector } from "react-redux";
+import { itemsAtom } from "../../atoms/items-atom";
 
 const ListItems: React.FC = () => {
-  const items = useSelector((state: RootState) => state.items.items);
+  const items = itemsAtom.value;
 
   return (
     <Droppable droppableId="todos">
