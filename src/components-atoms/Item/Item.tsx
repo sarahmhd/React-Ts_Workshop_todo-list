@@ -1,5 +1,4 @@
 import { Check, Pencil, X } from 'lucide-react';
-import { changeItemDone, deleteItem, editItem } from "../../store/features/ListSlice";
 
 import { Draggable } from '@hello-pangea/dnd';
 import { Item as ItemInterface } from "../../types/globalTypes";
