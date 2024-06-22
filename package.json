@@ -18,7 +18,8 @@
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.1.2"
+    "react-redux": "^9.1.2",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@swc/core": "^1.5.25",

@@ -1,19 +1,22 @@
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
-import AddItemForm from './components-atoms/AddItemForm';
-import ClearAll from './components-atoms/ClearAll';
-import Footer from './components-atoms/Footer';
-import Header from './components-atoms/Header';
-import ListItems from './components-atoms/ListItems';
+import AddItemForm from './components-zustand/AddItemForm';
+import ClearAll from './components-zustand/ClearAll';
+import Footer from './components-zustand/Footer';
+import Header from './components-zustand/Header';
+import ListItems from './components-zustand/ListItems';
 // import { RootState } from './store/store';
-import { itemsAtom } from './atoms/items-atom';
+// import { itemsAtom } from './atoms/items-atom';
+import { reorderItems } from './store-zustand/features/ListSlice';
+import { useItemsStore } from './store-zustand/store';
 
 // import { reorderItems } from './store/features/ListSlice';
 // import { useDispatch } from 'react-redux';
 
 const App: React.FC = () => {
   // const items = useSelector((state: RootState) => state.items.items);
-  const items = itemsAtom.useValue()
+  // const items = itemsAtom.useValue()
+  const items = useItemsStore((state)=> state.items)
   // const dispatch = useDispatch();
 
   const onDragEnd = (result: DropResult) => {
@@ -26,8 +29,13 @@ const App: React.FC = () => {
     //   endIndex: destination.index,
     // }));
 
-    itemsAtom.reorderItems(source.index, destination.index,);
-    itemsAtom.refresh()
+    // itemsAtom.reorderItems(source.index, destination.index);
+    // itemsAtom.refresh()
+    
+    reorderItems({
+      startIndex: source.index,
+      endIndex: destination.index,
+    })
   };
 
 
