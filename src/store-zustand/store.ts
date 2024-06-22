@@ -28,7 +28,7 @@ export const useItemsStore = create<ItemsState>()(persist((set) => ({
   deleteAll: () => set({ items: [] }),
 }),
     {
-      name: 'items', 
+      name: 'items-zustand', 
       storage: createJSONStorage(() => sessionStorage), 
     },
 ))

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.6.0",
+    "@mantine/core": "^7.10.2",
+    "@mantine/hooks": "^7.10.2",
     "@mongez/cache": "^1.2.4",
     "@mongez/react-atom": "^5.0.0",
     "@reduxjs/toolkit": "^2.2.5",

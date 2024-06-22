@@ -48,6 +48,7 @@ const Item: React.FC<ItemProps> = ({ item, index }) => {
             <input
               className='px-3 focus:shadow-none focus:outline-none'
               onKeyDown={(e) => e.key === 'Enter' && handleEdit(item.id, editVal)}
+              onBlur={() => handleEdit(item.id, editVal)}
               autoFocus
               type='text'
               value={editVal}

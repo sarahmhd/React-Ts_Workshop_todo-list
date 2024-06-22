@@ -1,41 +1,28 @@
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
-import AddItemForm from './components-zustand/AddItemForm';
-import ClearAll from './components-zustand/ClearAll';
-import Footer from './components-zustand/Footer';
-import Header from './components-zustand/Header';
-import ListItems from './components-zustand/ListItems';
-// import { RootState } from './store/store';
-// import { itemsAtom } from './atoms/items-atom';
-import { reorderItems } from './store-zustand/features/ListSlice';
-import { useItemsStore } from './store-zustand/store';
-
-// import { reorderItems } from './store/features/ListSlice';
-// import { useDispatch } from 'react-redux';
+import AddItemForm from './components/AddItemForm';
+import ClearAll from './components/ClearAll';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import ListItems from './components/ListItems';
+import { RootState } from './store/store';
+import { reorderItems } from './store/features/ListSlice';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const App: React.FC = () => {
-  // const items = useSelector((state: RootState) => state.items.items);
-  // const items = itemsAtom.useValue()
-  const items = useItemsStore((state)=> state.items)
-  // const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.items.items);
+  const dispatch = useDispatch();
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source } = result;
     if (!destination) {
       return;
     }
-    // dispatch(reorderItems({
-    //   startIndex: source.index,
-    //   endIndex: destination.index,
-    // }));
-
-    // itemsAtom.reorderItems(source.index, destination.index);
-    // itemsAtom.refresh()
-    
-    reorderItems({
+    dispatch(reorderItems({
       startIndex: source.index,
       endIndex: destination.index,
-    })
+    }));
   };
 
 

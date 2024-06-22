@@ -20,9 +20,9 @@ type ItemsAtomActions = {
 
 export const itemsAtom = atom<Item[],ItemsAtomActions>({
     key: 'items',
-    default: cache.get('items', []),
+    default: cache.get('items-atoms', []),
     beforeUpdate(items) {
-        cache.set("items", items);
+        cache.set("items-atoms", items);
         return items;
     },
     actions: {
