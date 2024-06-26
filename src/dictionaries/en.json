@@ -1,6 +1,7 @@
 {
     "title": "To-Do List",
     "inputPlaceholder":"Add Your Task...",
+    "add":"Add",
     "listEmpty":"Your todo list is currently empty. Start adding tasks to get organized!",
     "clearAll": "clear all",
     "tasks": {
