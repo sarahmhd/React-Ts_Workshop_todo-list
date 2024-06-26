@@ -1,8 +1,11 @@
 import { Item } from "../../types/globalTypes";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+
+  const { t } = useTranslation()
 
   const items = useSelector((state: RootState) => state.items.items);
   const doneItems: Item[] = items.filter(item => item.done === true);
@@ -12,9 +15,12 @@ export default function Footer() {
       <p className="mt-4">
         {items.length > 0 ?
           (doneItemsPercent !== 100) ?
-            ` 📃 You have ${items.length} tasks on your list, and you already finished ${doneItems.length} 
-            (${Math.round(doneItemsPercent)}%)` :
-            'You Finished all tasks, Congrats 🎉🎉' : null}
+            t('tasks.incomplete', {
+              count: items.length,
+              doneCount: doneItems.length,
+              percent: Math.round(doneItemsPercent)
+            }) :
+            t('tasks.complete') : null}
       </p>
     </>
   );

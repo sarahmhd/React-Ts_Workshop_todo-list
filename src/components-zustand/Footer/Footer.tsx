@@ -1,8 +1,10 @@
 import { Item } from "../../types/globalTypes";
 import { useItemsStore } from "../../store-zustand/store";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
 
+  const { t } = useTranslation()
   const items = useItemsStore((state) => state.items);
   const doneItems: Item[] = items.filter(item => item.done === true);
   const doneItemsPercent: number = (items.length > 0) ? (doneItems.length / items.length) * 100 : 0;
@@ -11,9 +13,12 @@ export default function Footer() {
       <p className="mt-4">
         {items.length > 0 ?
           (doneItemsPercent !== 100) ?
-            ` 📃 You have ${items.length} tasks on your list, and you already finished ${doneItems.length} 
-            (${Math.round(doneItemsPercent)}%)` :
-            'You Finished all tasks, Congrats 🎉🎉' : null}
+            t('tasks.incomplete', {
+              count: items.length,
+              doneCount: doneItems.length,
+              percent: Math.round(doneItemsPercent)
+            }) :
+            t('tasks.complete') : null}
       </p>
     </>
   );

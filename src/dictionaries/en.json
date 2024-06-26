@@ -1,0 +1,10 @@
+{
+    "title": "To-Do List",
+    "inputPlaceholder":"Add Your Task...",
+    "listEmpty":"Your todo list is currently empty. Start adding tasks to get organized!",
+    "clearAll": "clear all",
+    "tasks": {
+        "incomplete": "📃 You have {{count}} tasks on your list, and you already finished {{doneCount}} ({{percent}}%)",
+        "complete": "You Finished all tasks, Congrats 🎉🎉"
+    }
+}

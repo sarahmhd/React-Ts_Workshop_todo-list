@@ -15,13 +15,21 @@ body {
   background: #f2f2f2;
 }
 
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
 form {
   border: 1px solid;
   border-radius: 30px;
 }
 
 form input {
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px 10px 15px;
   border-radius: 30px;
 }
 
@@ -66,12 +74,19 @@ form button,
   text-decoration: line-through;
 }
 
+.ltr .message  {
+  border-right: 2px solid;
+}
+
+.rtl .message  {
+  border-left: 2px solid;
+}
+
 .message {
   height: fit-content;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid;
   width: 0;
   animation: typing 4s steps(40, end) 2, blink-caret 0.75s step-end infinite;
   animation-fill-mode: forwards;

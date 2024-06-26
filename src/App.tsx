@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 const App: React.FC = () => {
   const items = useSelector((state: RootState) => state.items.items);
+
   const dispatch = useDispatch();
 
   const onDragEnd = (result: DropResult) => {

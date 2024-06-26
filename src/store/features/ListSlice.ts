@@ -16,7 +16,6 @@ export const ListSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action: PayloadAction<Item>) => {
-            // state.items = [...state.items, action.payload]
             state.items.push(action.payload);
         },
         changeItemDone: (state, action: PayloadAction<number|string>) => {
@@ -39,7 +38,6 @@ export const ListSlice = createSlice({
 })
 
 
-// Action creators are generated for each case reducer function
 export const { addItem , changeItemDone , deleteItem , deleteAll , editItem , reorderItems} = ListSlice.actions
 
 export const userSelector = (state: RootState) => state.items;

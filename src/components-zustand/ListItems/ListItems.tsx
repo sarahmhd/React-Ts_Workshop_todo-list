@@ -1,9 +1,11 @@
 import { Droppable } from "@hello-pangea/dnd";
 import Item from "../Item";
 import { useItemsStore } from "../../store-zustand/store";
+import { useTranslation } from "react-i18next";
 
 const ListItems: React.FC = () => {
-  const items = useItemsStore((state)=> state.items)
+  const { t } = useTranslation()
+  const items = useItemsStore((state) => state.items)
 
   return (
     <Droppable droppableId="todos">
@@ -18,7 +20,7 @@ const ListItems: React.FC = () => {
             items.map((item, idx) => <Item key={item.id} item={item} index={idx} />)
           ) : (
             <p className="message text-[#e08692] text-lg m-3 mt-8 pe-8 text-center">
-              Your todo list is currently empty. Start adding tasks to get organized!
+              {t("listEmpty")}
             </p>
           )}
           {provided.placeholder}
